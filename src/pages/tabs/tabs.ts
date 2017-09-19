@@ -17,6 +17,7 @@ export class TabsPage {
   HomeRoot: any = 'HomePage'
   tabCepRoot: any = 'TabCepPage'
   tabMapRoot: any = 'TabMapPage'
+  sociaisRoot: any = 'SociaisPage'
   mySelectedIndex: number;
 
 
