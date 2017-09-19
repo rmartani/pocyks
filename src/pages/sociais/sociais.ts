@@ -52,15 +52,15 @@ export class SociaisPage {
   }
 
   getUserDetail(userid) {
-  this.fb.api("/"+userid+"/?fields=id,email,name,picture,gender",["public_profile"])
-    .then(res => {
-      console.log(res);
-      this.users = res;
-    })
-    .catch(e => {
-      console.log(e);
-    });
-}
+    this.fb.api("/"+userid+"/?fields=id,email,name,picture,gender",["public_profile"])
+      .then(res => {
+        console.log(res);
+        this.users = res;
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SociaisPage');

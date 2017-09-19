@@ -8,6 +8,8 @@ import { App, MenuController, Nav, Platform } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabCepPage } from '../pages/tab-cep/tab-cep';
+import { TabMapPage } from '../pages/tab-map/tab-map';
+import { SociaisPage } from '../pages/sociais/sociais';
 // import { SlideBoxPage } from '../pages/slide-box/slide-box.page';
 // import { WordpressListPage } from '../pages/wordpress/list/wordpress.list.page';
 
@@ -38,14 +40,14 @@ export class MyApp {
 
 		// set our app's pages
 		this.pages = [
-			{ title: 'Home', component: TabsPage, icon: 'home' },
-			{ title: 'Wordpress', component: TabCepPage, icon: 'logo-wordpress' },
-			// { title: 'Slides', component: SlideBoxPage, icon: 'swap' },
-			// { title: 'Google maps', component: GoogleMapsPage, icon: 'map' },
+			{ title: 'Home', component: HomePage, icon: 'home' },
+			{ title: 'Cep', component: TabCepPage, icon: 'navigate' },
+		 	{ title: 'Google maps', component: TabMapPage, icon: 'map' },
+			{ title: 'Facebook', component: SociaisPage, icon: 'logo-facebook' },
 			// { title: 'Components', component: ComponentsListPage, icon: 'grid' }
 		];
 
-		this.rootPage = TabsPage;
+		this.rootPage = HomePage;
 	}
 
 	initializeApp() {
