@@ -11,8 +11,8 @@
     <ion-list>
         <ion-item-sliding *ngFor="let item of contacts" [ngClass]="{'item-inactive': !item.contact.active }">
             <button ion-item (click)="editContact(item);">
-              <h2>{{ item.contact.name }}</h2>
-              <p>{{ item.contact.phone }}</p>
+              <h2>{{ item.contact.name }}  {{ item.contact.lastname }}</h2>
+              <p>{{ item.contact.email }}</p>
               <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
             </button>
       

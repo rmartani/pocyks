@@ -3,15 +3,15 @@
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>PocYKS 2</ion-title>
+        <ion-title>Facebook</ion-title>
       </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div *ngIf="isLoggedIn; else facebookLogin">
-    <h2>Hi, {{users.name}} ({{users.email}})</h2>
+    <h2>Olá, {{users.name}} ({{users.email}})</h2>
     <p>
-      Gender: {{users.gender}}
+      Sexo: {{users.gender}}
     </p>
     <p>
       <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />
@@ -24,7 +24,7 @@
   </div>
   <ng-template #facebookLogin>
     <button ion-button icon-right (click)="login()">
-      Login with
+      Logar com
       <ion-icon name="logo-facebook"></ion-icon>
     </button>
   </ng-template>

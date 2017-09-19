@@ -48,9 +48,7 @@ export class Contact {
   name: string;
   lastname: string;
   password: string;
-  phone: number;
-  birth: Date;
-  active: boolean;
+  email: string;
   image: ImageBitmap;
 }
 
