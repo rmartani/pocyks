@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Usuário
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<!-- 
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+        <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+        <div class="profile-image-wrapper" (click)="getPicture()">
+          <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
+            <ion-icon name="add"></ion-icon>
+            <div>
+              teste
+            </div>
+          </div>
+          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+        </div>
+      </form> -->
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Sobrenome</ion-label>
+      <ion-input type="text" name="lastname" [(ngModel)]="model.lastname"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item> -->
+      <!-- <ion-label stacked>Senha</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="model.password"></ion-input> -->
+    <!-- </ion-item> --> 
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="{{type}}" name="password" [(ngModel)]="model.password" required pattern=".{4,10}"></ion-input>
+      <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-off-outline"></ion-icon></button>
+      <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-outline"></ion-icon></button>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label stacked>Telefone</ion-label>
+      <ion-input type="tel" name="phone" [(ngModel)]="model.phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Nascimento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" name="birth" [(ngModel)]="model.birth"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ativo</ion-label>
+      <ion-checkbox name="active" [(ngModel)]="model.active"></ion-checkbox>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="save()">Salvar</button>
+
+</ion-content>

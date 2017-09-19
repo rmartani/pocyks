@@ -1,0 +1,14 @@
+{
+  "name": "AppName",
+  "app_id": "4f7787bd",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/cep/",
+      "proxyUrl": "http://correiosapi.apphb.com/cep/"
+    }
+  ]
+}
