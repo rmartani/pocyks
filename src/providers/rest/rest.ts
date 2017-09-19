@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from 'ionic-angular';
 
 /*
   Generated class for the RestProvider provider.
@@ -14,7 +15,7 @@ export class RestProvider {
 
   apiUrl = '/cep/';
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public alertCtrl: AlertController) {
     console.log('Hello RestServiceProvider Provider');
   }
 
@@ -23,6 +24,7 @@ export class RestProvider {
       this.http.get(this.apiUrl+id).subscribe(data => {
         resolve(data);
       }, err => {
+        this.doAlert();
         console.log(err);
       });
     });
@@ -38,6 +40,15 @@ export class RestProvider {
         });
     });
   }
+
+  doAlert() {
+		let alert = this.alertCtrl.create({
+			title: 'Cep não encontrado!',
+			// message: 'Cep não encontrado!',
+			buttons: ['Ok']
+		});
+		alert.present();
+	}
   
 
 }

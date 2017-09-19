@@ -18,14 +18,15 @@
 
     <ion-item>
         <ion-label stacked>CEP</ion-label>
-        <ion-input type="number" name="name" [(ngModel)]="cep"></ion-input>
+        <ion-input type="tel" name="name" maxlength=8 [(ngModel)]="cep"></ion-input>
       </ion-item>
   <!-- <ion-list inset> -->
 
-   <button ion-button block (click)="getUsers(cep)">Carregar</button>
+   <button ion-button block (click)="getUsers(cep)">Buscar</button>
     <!-- <ion-item> -->
       <p>{{users?.tipoDeLogradouro}} {{users?.logradouro}}</p>
       <p>{{users?.bairro}}</p>
+      
     <!-- </ion-item> -->
 
     <!-- <ion-item *ngIf="users">

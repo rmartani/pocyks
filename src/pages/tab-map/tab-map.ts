@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -15,11 +15,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabMapPage {
 
+  @ViewChild('map') mapElement;
+  map: any
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
+    this.initMap();
     console.log('ionViewDidLoad TabMapPage');
+  }
+
+  initMap(){
+      let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
   }
 
 }

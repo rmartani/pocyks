@@ -7,7 +7,7 @@ webpackJsonp([1],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditContactPageModule", function() { return EditContactPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_contact__ = __webpack_require__(286);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -29,7 +29,7 @@ EditContactPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__edit_contact__["a" /* EditContactPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_contact__["a" /* EditContactPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_contact__["a" /* EditContactPage */]),
         ],
     })
 ], EditContactPageModule);
@@ -44,7 +44,7 @@ EditContactPageModule = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_contact_contact__ = __webpack_require__(106);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -105,11 +105,11 @@ var EditContactPage = (function () {
     return EditContactPage;
 }());
 EditContactPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-edit-contact',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/edit-contact/edit-contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Usuário\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n<!-- \n    <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">\n        <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />\n        <div class="profile-image-wrapper" (click)="getPicture()">\n          <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">\n            <ion-icon name="add"></ion-icon>\n            <div>\n              teste\n            </div>\n          </div>\n          <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>\n        </div>\n      </form> -->\n\n  <ion-list>\n\n    <ion-item>\n      <ion-label stacked>Nome</ion-label>\n      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Sobrenome</ion-label>\n      <ion-input type="text" name="lastname" [(ngModel)]="model.lastname"></ion-input>\n    </ion-item>\n\n    <!-- <ion-item> -->\n      <!-- <ion-label stacked>Senha</ion-label>\n      <ion-input type="password" name="password" [(ngModel)]="model.password"></ion-input> -->\n    <!-- </ion-item> --> \n    <ion-item>\n      <ion-label stacked>Password</ion-label>\n      <ion-input type="{{type}}" name="password" [(ngModel)]="model.password" required pattern=".{4,10}"></ion-input>\n      <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-off-outline"></ion-icon></button>\n      <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-outline"></ion-icon></button>\n    </ion-item>\n\n\n    <ion-item>\n      <ion-label stacked>E-mail</ion-label>\n      <ion-input type="email" name="email" [(ngModel)]="model.email"></ion-input>\n    </ion-item>\n\n  </ion-list>\n\n  <button ion-button block (click)="save()">Salvar</button>\n\n</ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/edit-contact/edit-contact.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_contact_contact__["b" /* ContactProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_contact_contact__["b" /* ContactProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
 ], EditContactPage);
 
 //# sourceMappingURL=edit-contact.js.map
