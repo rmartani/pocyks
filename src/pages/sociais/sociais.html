@@ -39,7 +39,8 @@
   <ion-content padding>
     <div *ngIf="isLoggedIn; else facebookLogin">
         <img src={{photoURL}}>
-        <h1>Olá {{displayName}}</h1>  
+        <h1>Olá {{displayName}}</h1> 
+        <p>{{email}}</p> 
         <button ion-button (click)="signOut()">Logout</button>
     </div>
     <ng-template #facebookLogin>

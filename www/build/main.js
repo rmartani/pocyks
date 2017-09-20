@@ -114,7 +114,7 @@ var TabCepPage = (function () {
 TabCepPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-tab-cep',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/tab-cep/tab-cep.html"*/'<!--\n  Generated template for the TabCepPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>CEP</ion-title>\n	</ion-navbar>\n</ion-header>\n\n\n<ion-content>\n\n    <ion-item>\n        <ion-label stacked>CEP</ion-label>\n        <ion-input type="tel" name="name" maxlength=8 [(ngModel)]="cep"></ion-input>\n      </ion-item>\n  <!-- <ion-list inset> -->\n\n    \n   <button ion-button round color="cep" (click)="getUsers(cep)">Buscar</button>\n    <!-- <ion-item> -->\n      <p>{{users?.tipoDeLogradouro}} {{users?.logradouro}}</p>\n      {{users?.cidade}} {{users?.estado}}\n      <p>{{users?.bairro}}</p>\n      \n    <!-- </ion-item> -->\n\n    <!-- <ion-item *ngIf="users">\n      <h2>{{users.name}}</h2>\n      <p>{{users.email}}</p>\n    </ion-item> -->\n  <!-- </ion-list> -->\n\n  <!-- <button ion-button block (click)="getUsers()">Carregar</button> -->\n</ion-content>\n'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/tab-cep/tab-cep.html"*/,
+        selector: 'page-tab-cep',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/tab-cep/tab-cep.html"*/'<!--\n  Generated template for the TabCepPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>CEP</ion-title>\n	</ion-navbar>\n</ion-header>\n\n\n<ion-content>\n\n    <ion-item>\n        <ion-label stacked>CEP</ion-label>\n        <ion-input type="tel" name="name" maxlength=8 [(ngModel)]="cep"></ion-input>\n      </ion-item>\n  <!-- <ion-list inset> -->\n\n    \n   <button ion-button round color="cep" (click)="getUsers(cep)">Buscar</button>\n    <!-- <ion-item> -->\n      <p>{{users?.tipoDeLogradouro}} {{users?.logradouro}}</p>\n      <p>{{users?.cidade}} {{users?.estado}}</p>\n      <p>{{users?.bairro}}</p>\n      \n    <!-- </ion-item> -->\n\n    <!-- <ion-item *ngIf="users">\n      <h2>{{users.name}}</h2>\n      <p>{{users.email}}</p>\n    </ion-item> -->\n  <!-- </ion-list> -->\n\n  <!-- <button ion-button block (click)="getUsers()">Carregar</button> -->\n</ion-content>\n'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/tab-cep/tab-cep.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
 ], TabCepPage);
@@ -215,7 +215,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // @IonicPage()
 // @Component({
 //   selector: 'page-sociais',
-//template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/'<!-- <ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="isLoggedIn; else facebookLogin">\n    <h2>Olá, {{users.name}} ({{users.email}})</h2>\n    <p>\n      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />\n    </p>\n    <p>\n      <button ion-button icon-right (click)="logout()">\n        Logout\n      </button>\n    </p>\n  </div>\n  <ng-template #facebookLogin>\n    <button ion-button icon-right (click)="login()">\n      Logar com\n      <ion-icon name="logo-facebook"></ion-icon>\n    </button>\n  </ng-template>\n</ion-content> -->\n\n<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n    <div *ngIf="isLoggedIn; else facebookLogin">\n        <img src={{photoURL}}>\n        <h1>Olá {{displayName}}</h1>  \n        <button ion-button (click)="signOut()">Logout</button>\n    </div>\n    <ng-template #facebookLogin>\n        <button ion-button icon-right (click)="signInWithFacebook()">\n            Login \n            <ion-icon name="logo-facebook"></ion-icon>\n        </button> \n    </ng-template>\n  </ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/,
+//template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/'<!-- <ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="isLoggedIn; else facebookLogin">\n    <h2>Olá, {{users.name}} ({{users.email}})</h2>\n    <p>\n      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />\n    </p>\n    <p>\n      <button ion-button icon-right (click)="logout()">\n        Logout\n      </button>\n    </p>\n  </div>\n  <ng-template #facebookLogin>\n    <button ion-button icon-right (click)="login()">\n      Logar com\n      <ion-icon name="logo-facebook"></ion-icon>\n    </button>\n  </ng-template>\n</ion-content> -->\n\n<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n    <div *ngIf="isLoggedIn; else facebookLogin">\n        <img src={{photoURL}}>\n        <h1>Olá {{displayName}}</h1> \n        <p>{{email}}</p> \n        <button ion-button (click)="signOut()">Logout</button>\n    </div>\n    <ng-template #facebookLogin>\n        <button ion-button icon-right (click)="signInWithFacebook()">\n            Login \n            <ion-icon name="logo-facebook"></ion-icon>\n        </button> \n    </ng-template>\n  </ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/,
 // })
 // export class SociaisPage {
 //   isLoggedIn:boolean = false;
@@ -287,12 +287,14 @@ var SociaisPage = (function () {
             if (!user) {
                 _this.displayName = null;
                 _this.photoURL = null;
+                _this.email = null;
                 _this.isLoggedIn = false;
                 return;
             }
             _this.displayName = user.displayName;
             _this.photoURL = user.photoURL,
-                _this.isLoggedIn = true;
+                _this.email = user.email;
+            _this.isLoggedIn = true;
         });
     }
     SociaisPage.prototype.signInWithFacebook = function () {
@@ -316,7 +318,7 @@ var SociaisPage = (function () {
 SociaisPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-sociais',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/'<!-- <ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="isLoggedIn; else facebookLogin">\n    <h2>Olá, {{users.name}} ({{users.email}})</h2>\n    <p>\n      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />\n    </p>\n    <p>\n      <button ion-button icon-right (click)="logout()">\n        Logout\n      </button>\n    </p>\n  </div>\n  <ng-template #facebookLogin>\n    <button ion-button icon-right (click)="login()">\n      Logar com\n      <ion-icon name="logo-facebook"></ion-icon>\n    </button>\n  </ng-template>\n</ion-content> -->\n\n<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n    <div *ngIf="isLoggedIn; else facebookLogin">\n        <img src={{photoURL}}>\n        <h1>Olá {{displayName}}</h1>  \n        <button ion-button (click)="signOut()">Logout</button>\n    </div>\n    <ng-template #facebookLogin>\n        <button ion-button icon-right (click)="signInWithFacebook()">\n            Login \n            <ion-icon name="logo-facebook"></ion-icon>\n        </button> \n    </ng-template>\n  </ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/,
+        selector: 'page-sociais',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/'<!-- <ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="isLoggedIn; else facebookLogin">\n    <h2>Olá, {{users.name}} ({{users.email}})</h2>\n    <p>\n      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />\n    </p>\n    <p>\n      <button ion-button icon-right (click)="logout()">\n        Logout\n      </button>\n    </p>\n  </div>\n  <ng-template #facebookLogin>\n    <button ion-button icon-right (click)="login()">\n      Logar com\n      <ion-icon name="logo-facebook"></ion-icon>\n    </button>\n  </ng-template>\n</ion-content> -->\n\n<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n    <div *ngIf="isLoggedIn; else facebookLogin">\n        <img src={{photoURL}}>\n        <h1>Olá {{displayName}}</h1> \n        <p>{{email}}</p> \n        <button ion-button (click)="signOut()">Logout</button>\n    </div>\n    <ng-template #facebookLogin>\n        <button ion-button icon-right (click)="signInWithFacebook()">\n            Login \n            <ion-icon name="logo-facebook"></ion-icon>\n        </button> \n    </ng-template>\n  </ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_facebook__["a" /* Facebook */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]])
@@ -705,56 +707,9 @@ SociaisPageModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the TabsPage tabs.
- *
- * See https://angular.io/docs/ts/latest/guide/dependency-injection.html for
- * more info on providers and Angular DI.
- */
-var TabsPage = (function () {
-    function TabsPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.HomeRoot = 'HomePage';
-        this.tabCepRoot = 'TabCepPage';
-        this.tabMapRoot = 'TabMapPage';
-        this.sociaisRoot = 'SociaisPage';
-        this.mySelectedIndex = navParams.data.tabIndex || 0;
-    }
-    return TabsPage;
-}());
-TabsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-tabs',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/tabs/tabs.html"*/'<ion-tabs [selectedIndex]="mySelectedIndex" name="conference">\n    <ion-tab [root]="HomeRoot" tabTitle="Tab Home" tabIcon="information-circle"></ion-tab>\n    <ion-tab [root]="tabCepRoot" tabTitle="Tab cep" tabIcon="information-circle"></ion-tab>\n    <ion-tab [root]="tabMapRoot" tabTitle="Tab map" tabIcon="information-circle"></ion-tab>\n    <ion-tab [root]="sociaisRoot" tabTitle="Tab map" tabIcon="information-circle"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/tabs/tabs.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-], TabsPage);
-
-//# sourceMappingURL=tabs.js.map
-
-/***/ }),
-
-/***/ 285:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(286);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(301);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -762,7 +717,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 302:
+/***/ 301:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -771,11 +726,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_facebook__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_home_module__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tab_cep_tab_cep_module__ = __webpack_require__(196);
@@ -893,7 +848,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 374:
+/***/ 373:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -978,7 +933,54 @@ MyApp = __decorate([
 
 //# sourceMappingURL=app.component.js.map
 
+/***/ }),
+
+/***/ 374:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the TabsPage tabs.
+ *
+ * See https://angular.io/docs/ts/latest/guide/dependency-injection.html for
+ * more info on providers and Angular DI.
+ */
+var TabsPage = (function () {
+    function TabsPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.HomeRoot = 'HomePage';
+        this.tabCepRoot = 'TabCepPage';
+        this.tabMapRoot = 'TabMapPage';
+        this.sociaisRoot = 'SociaisPage';
+        this.mySelectedIndex = navParams.data.tabIndex || 0;
+    }
+    return TabsPage;
+}());
+TabsPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-tabs',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/tabs/tabs.html"*/'<ion-tabs [selectedIndex]="mySelectedIndex" name="conference">\n    <ion-tab [root]="HomeRoot" tabTitle="Tab Home" tabIcon="information-circle"></ion-tab>\n    <ion-tab [root]="tabCepRoot" tabTitle="Tab cep" tabIcon="information-circle"></ion-tab>\n    <ion-tab [root]="tabMapRoot" tabTitle="Tab map" tabIcon="information-circle"></ion-tab>\n    <ion-tab [root]="sociaisRoot" tabTitle="Tab map" tabIcon="information-circle"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/tabs/tabs.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+], TabsPage);
+
+//# sourceMappingURL=tabs.js.map
+
 /***/ })
 
-},[285]);
+},[284]);
 //# sourceMappingURL=main.js.map

@@ -12,6 +12,7 @@ import { AlertController } from 'ionic-angular';
 */
 @Injectable()
 export class RestProvider {
+  
 
   apiUrl = 'http://correiosapi.apphb.com/cep/';
 

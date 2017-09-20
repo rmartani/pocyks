@@ -92,7 +92,8 @@ export class SociaisPage {
   
   isLoggedIn:boolean = false;
   displayName;
-  photoURL
+  photoURL;
+  email
 
   constructor(public navCtrl: NavController,
     private afAuth: AngularFireAuth, private fb: Facebook, private platform: Platform) {
@@ -100,11 +101,13 @@ export class SociaisPage {
       if (!user) {
         this.displayName = null;
         this.photoURL = null;
+        this.email = null;
         this.isLoggedIn = false;
         return;
       }
       this.displayName = user.displayName; 
       this.photoURL = user.photoURL,
+      this.email = user.email;
       this.isLoggedIn = true      
     });
   }
