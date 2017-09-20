@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
@@ -10,9 +10,6 @@
 <ion-content padding>
   <div *ngIf="isLoggedIn; else facebookLogin">
     <h2>Olá, {{users.name}} ({{users.email}})</h2>
-    <p>
-      Sexo: {{users.gender}}
-    </p>
     <p>
       <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />
     </p>
@@ -28,4 +25,27 @@
       <ion-icon name="logo-facebook"></ion-icon>
     </button>
   </ng-template>
-</ion-content>
+</ion-content> -->
+
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Facebook</ion-title>
+      </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <div *ngIf="isLoggedIn; else facebookLogin">
+        <img src={{photoURL}}>
+        <h1>Olá {{displayName}}</h1>  
+        <button ion-button (click)="signOut()">Logout</button>
+    </div>
+    <ng-template #facebookLogin>
+        <button ion-button icon-right (click)="signInWithFacebook()">
+            Login 
+            <ion-icon name="logo-facebook"></ion-icon>
+        </button> 
+    </ng-template>
+  </ion-content>

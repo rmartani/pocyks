@@ -27,6 +27,18 @@ import { ContactProvider } from '../providers/contact/contact';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCMeArK9bNabZn_WN0dbUXKH2ss8551mzs",
+  authDomain: "pocyks-2d523.firebaseapp.com",
+  databaseURL: "https://pocyks-2d523.firebaseio.com/",
+  storageBucket: "pocyks-2d523.appspot.com",
+  messagingSenderId: '<your-messaging-sender-id>'
+};
+
 
 @NgModule({
   declarations: [
@@ -45,6 +57,9 @@ import { RestProvider } from '../providers/rest/rest';
     TabMapPageModule,
     SociaisPageModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']

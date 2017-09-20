@@ -1,6 +1,332 @@
 webpackJsonp([3],{
 
-/***/ 106:
+/***/ 108:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_contact_contact__ = __webpack_require__(143);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var HomePage = (function () {
+    function HomePage(navCtrl, contactProvider, toast, nav) {
+        this.navCtrl = navCtrl;
+        this.contactProvider = contactProvider;
+        this.toast = toast;
+    }
+    HomePage.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        console.log('ionViewDidLoad HomePage');
+        this.contactProvider.getAll()
+            .then(function (result) {
+            _this.contacts = result;
+        });
+    };
+    HomePage.prototype.addContact = function () {
+        this.navCtrl.push('EditContactPage');
+    };
+    HomePage.prototype.editContact = function (item) {
+        this.navCtrl.push('EditContactPage', { key: item.key, contact: item.contact });
+    };
+    HomePage.prototype.removeContact = function (item) {
+        var _this = this;
+        this.contactProvider.remove(item.key)
+            .then(function () {
+            // Removendo do array de items
+            var index = _this.contacts.indexOf(item);
+            _this.contacts.splice(index, 1);
+            _this.toast.create({ message: 'Contato removido.', duration: 3000, position: 'botton' }).present();
+        });
+    };
+    return HomePage;
+}());
+HomePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-home',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>Usuários</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-list>\n        <ion-item-sliding *ngFor="let item of contacts" [ngClass]="{\'item-inactive\': !item.contact.active }">\n            <button ion-item (click)="editContact(item);">\n              <h2>{{ item.contact.name }}  {{ item.contact.lastname }}</h2>\n              <p>{{ item.contact.email }}</p>\n              <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>\n            </button>\n      \n            <ion-item-options>\n              <button ion-button color="danger" (click)="removeContact(item);">\n                DELETAR\n              </button>\n            </ion-item-options>\n        </ion-item-sliding>\n\n    </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="primary" (click)="addContact()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/home/home.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_contact_contact__["b" /* ContactProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]])
+], HomePage);
+
+//# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 109:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabCepPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(197);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the TabCepPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var TabCepPage = (function () {
+    function TabCepPage(navCtrl, restProvider) {
+        this.navCtrl = navCtrl;
+        this.restProvider = restProvider;
+        // this.getUsers();
+    }
+    TabCepPage.prototype.getUsers = function (id) {
+        var _this = this;
+        this.restProvider.getUsers(id)
+            .then(function (data) {
+            _this.users = data;
+            console.log(_this.users);
+        });
+    };
+    TabCepPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad TabCepPage');
+    };
+    return TabCepPage;
+}());
+TabCepPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-tab-cep',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/tab-cep/tab-cep.html"*/'<!--\n  Generated template for the TabCepPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>CEP</ion-title>\n	</ion-navbar>\n</ion-header>\n\n\n<ion-content>\n\n    <ion-item>\n        <ion-label stacked>CEP</ion-label>\n        <ion-input type="tel" name="name" maxlength=8 [(ngModel)]="cep"></ion-input>\n      </ion-item>\n  <!-- <ion-list inset> -->\n\n    \n   <button ion-button round color="cep" (click)="getUsers(cep)">Buscar</button>\n    <!-- <ion-item> -->\n      <p>{{users?.tipoDeLogradouro}} {{users?.logradouro}}</p>\n      {{users?.cidade}} {{users?.estado}}\n      <p>{{users?.bairro}}</p>\n      \n    <!-- </ion-item> -->\n\n    <!-- <ion-item *ngIf="users">\n      <h2>{{users.name}}</h2>\n      <p>{{users.email}}</p>\n    </ion-item> -->\n  <!-- </ion-list> -->\n\n  <!-- <button ion-button block (click)="getUsers()">Carregar</button> -->\n</ion-content>\n'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/tab-cep/tab-cep.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
+], TabCepPage);
+
+//# sourceMappingURL=tab-cep.js.map
+
+/***/ }),
+
+/***/ 110:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabMapPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the TabMapPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var TabMapPage = (function () {
+    function TabMapPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    TabMapPage.prototype.ionViewDidLoad = function () {
+        this.initMap();
+        console.log('ionViewDidLoad TabMapPage');
+    };
+    TabMapPage.prototype.initMap = function () {
+        var latLng = new google.maps.LatLng(-34.9290, 138.6010);
+        var mapOptions = {
+            center: latLng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    };
+    return TabMapPage;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewChild */])('map'),
+    __metadata("design:type", Object)
+], TabMapPage.prototype, "mapElement", void 0);
+TabMapPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-tab-map',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/tab-map/tab-map.html"*/'<!--\n  Generated template for the TabMapPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>MAP</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div #map id ="map"></div>\n</ion-content>\n'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/tab-map/tab-map.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+], TabMapPage);
+
+//# sourceMappingURL=tab-map.js.map
+
+/***/ }),
+
+/***/ 111:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SociaisPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_facebook__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase_app__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_firebase_app__);
+// import { Component } from '@angular/core';
+// import { IonicPage, NavController, NavParams } from 'ionic-angular';
+// import { Facebook } from '@ionic-native/facebook';
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+// /**
+//  * Generated class for the SociaisPage page.
+//  *
+//  * See http://ionicframework.com/docs/components/#navigation for more info
+//  * on Ionic pages and navigation.
+//  */
+// @IonicPage()
+// @Component({
+//   selector: 'page-sociais',
+//template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/'<!-- <ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="isLoggedIn; else facebookLogin">\n    <h2>Olá, {{users.name}} ({{users.email}})</h2>\n    <p>\n      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />\n    </p>\n    <p>\n      <button ion-button icon-right (click)="logout()">\n        Logout\n      </button>\n    </p>\n  </div>\n  <ng-template #facebookLogin>\n    <button ion-button icon-right (click)="login()">\n      Logar com\n      <ion-icon name="logo-facebook"></ion-icon>\n    </button>\n  </ng-template>\n</ion-content> -->\n\n<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n    <div *ngIf="isLoggedIn; else facebookLogin">\n        <img src={{photoURL}}>\n        <h1>Olá {{displayName}}</h1>  \n        <button ion-button (click)="signOut()">Logout</button>\n    </div>\n    <ng-template #facebookLogin>\n        <button ion-button icon-right (click)="signInWithFacebook()">\n            Login \n            <ion-icon name="logo-facebook"></ion-icon>\n        </button> \n    </ng-template>\n  </ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/,
+// })
+// export class SociaisPage {
+//   isLoggedIn:boolean = false;
+//   users: any;
+//   constructor(public navCtrl: NavController, public navParams: NavParams, private fb: Facebook) {
+//     fb.getLoginStatus()
+//     .then(res => {
+//       console.log(res.status);
+//       if(res.status === "connect") {
+//         this.isLoggedIn = true;
+//       } else {
+//         this.isLoggedIn = false;
+//       }
+//     })
+//     .catch(e => console.log(e));
+//   }
+//   login() {
+//     this.fb.login(['public_profile', 'user_friends', 'email'])
+//       .then(res => {
+//         if(res.status === "connected") {
+//           this.isLoggedIn = true;
+//           this.getUserDetail(res.authResponse.userID);
+//         } else {
+//           this.isLoggedIn = false;
+//         }
+//       })
+//       .catch(e => console.log('Error logging into Facebook', e));
+//   }
+//   logout() {
+//     this.fb.logout()
+//       .then( res => this.isLoggedIn = false)
+//       .catch(e => console.log('Error logout from Facebook', e));
+//   }
+//   getUserDetail(userid) {
+//     this.fb.api("/"+userid+"/?fields=id,email,name,picture,gender",["public_profile"])
+//       .then(res => {
+//         console.log(res);
+//         this.users = res;
+//       })
+//       .catch(e => {
+//         console.log(e);
+//       });
+//   }
+//   ionViewDidLoad() {
+//     console.log('ionViewDidLoad SociaisPage');
+//   }
+// }
+
+
+
+
+
+
+/**
+ * Generated class for the SociaisPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var SociaisPage = (function () {
+    function SociaisPage(navCtrl, afAuth, fb, platform) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.afAuth = afAuth;
+        this.fb = fb;
+        this.platform = platform;
+        this.isLoggedIn = false;
+        afAuth.authState.subscribe(function (user) {
+            if (!user) {
+                _this.displayName = null;
+                _this.photoURL = null;
+                _this.isLoggedIn = false;
+                return;
+            }
+            _this.displayName = user.displayName;
+            _this.photoURL = user.photoURL,
+                _this.isLoggedIn = true;
+        });
+    }
+    SociaisPage.prototype.signInWithFacebook = function () {
+        if (this.platform.is('cordova')) {
+            return this.fb.login(['email', 'public_profile']).then(function (res) {
+                var facebookCredential = __WEBPACK_IMPORTED_MODULE_4_firebase_app__["auth"].FacebookAuthProvider.credential(res.authResponse.accessToken);
+                return __WEBPACK_IMPORTED_MODULE_4_firebase_app__["auth"]().signInWithCredential(facebookCredential);
+            });
+        }
+        else {
+            return this.afAuth.auth
+                .signInWithPopup(new __WEBPACK_IMPORTED_MODULE_4_firebase_app__["auth"].FacebookAuthProvider())
+                .then(function (res) { return console.log(res); });
+        }
+    };
+    SociaisPage.prototype.signOut = function () {
+        this.afAuth.auth.signOut();
+    };
+    return SociaisPage;
+}());
+SociaisPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-sociais',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/'<!-- <ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="isLoggedIn; else facebookLogin">\n    <h2>Olá, {{users.name}} ({{users.email}})</h2>\n    <p>\n      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />\n    </p>\n    <p>\n      <button ion-button icon-right (click)="logout()">\n        Logout\n      </button>\n    </p>\n  </div>\n  <ng-template #facebookLogin>\n    <button ion-button icon-right (click)="login()">\n      Logar com\n      <ion-icon name="logo-facebook"></ion-icon>\n    </button>\n  </ng-template>\n</ion-content> -->\n\n<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n    <div *ngIf="isLoggedIn; else facebookLogin">\n        <img src={{photoURL}}>\n        <h1>Olá {{displayName}}</h1>  \n        <button ion-button (click)="signOut()">Logout</button>\n    </div>\n    <ng-template #facebookLogin>\n        <button ion-button icon-right (click)="signInWithFacebook()">\n            Login \n            <ion-icon name="logo-facebook"></ion-icon>\n        </button> \n    </ng-template>\n  </ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_facebook__["a" /* Facebook */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]])
+], SociaisPage);
+
+//# sourceMappingURL=sociais.js.map
+
+/***/ }),
+
+/***/ 143:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,10 +334,10 @@ webpackJsonp([3],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Contact; });
 /* unused harmony export ContactList */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -81,7 +407,7 @@ var ContactList = (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 151:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -94,36 +420,36 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 115;
+webpackEmptyAsyncContext.id = 151;
 
 /***/ }),
 
-/***/ 156:
+/***/ 192:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/edit-contact/edit-contact.module": [
-		284,
+		423,
 		1
 	],
 	"../pages/home/home.module": [
-		157
+		193
 	],
 	"../pages/sociais/sociais.module": [
-		164
+		201
 	],
 	"../pages/tab-cep/tab-cep.module": [
-		160
+		196
 	],
 	"../pages/tab-map/tab-map.module": [
-		163
+		200
 	],
 	"../pages/tab-usuarios/tab-usuarios.module": [
-		285,
+		424,
 		0
 	],
 	"../pages/tabs/tabs.module": [
-		283,
+		422,
 		2
 	]
 };
@@ -138,20 +464,20 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 156;
+webpackAsyncContext.id = 192;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 157:
+/***/ 193:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -184,15 +510,15 @@ HomePageModule = __decorate([
 
 /***/ }),
 
-/***/ 160:
+/***/ 196:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabCepPageModule", function() { return TabCepPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_cep__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_cep__ = __webpack_require__(109);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -222,16 +548,16 @@ TabCepPageModule = __decorate([
 
 /***/ }),
 
-/***/ 161:
+/***/ 197:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(162);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -255,7 +581,7 @@ var RestProvider = (function () {
     function RestProvider(http, alertCtrl) {
         this.http = http;
         this.alertCtrl = alertCtrl;
-        this.apiUrl = '/cep/';
+        this.apiUrl = 'http://correiosapi.apphb.com/cep/';
         console.log('Hello RestServiceProvider Provider');
     }
     RestProvider.prototype.getUsers = function (id) {
@@ -299,15 +625,15 @@ RestProvider = __decorate([
 
 /***/ }),
 
-/***/ 163:
+/***/ 200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabMapPageModule", function() { return TabMapPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_map__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_map__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -337,15 +663,15 @@ TabMapPageModule = __decorate([
 
 /***/ }),
 
-/***/ 164:
+/***/ 201:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SociaisPageModule", function() { return SociaisPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sociais__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sociais__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -375,13 +701,13 @@ SociaisPageModule = __decorate([
 
 /***/ }),
 
-/***/ 207:
+/***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -422,13 +748,13 @@ TabsPage = __decorate([
 
 /***/ }),
 
-/***/ 208:
+/***/ 285:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(302);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -436,32 +762,36 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 226:
+/***/ 302:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export firebaseConfig */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_facebook__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_home_module__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tab_cep_tab_cep_module__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_tab_map_tab_map_module__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_sociais_sociais_module__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_tab_cep_tab_cep__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_tab_map_tab_map__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_sociais_sociais__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_storage__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_common__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_contact_contact__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_common_http__ = __webpack_require__(162);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_rest_rest__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_facebook__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_home_module__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tab_cep_tab_cep_module__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_tab_map_tab_map_module__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_sociais_sociais_module__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_tab_cep_tab_cep__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_tab_map_tab_map__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_sociais_sociais__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_storage__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_common__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_contact_contact__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_common_http__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_rest_rest__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_angularfire2__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_angularfire2_database__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_angularfire2_auth__ = __webpack_require__(204);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -490,6 +820,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+var firebaseConfig = {
+    apiKey: "AIzaSyCMeArK9bNabZn_WN0dbUXKH2ss8551mzs",
+    authDomain: "pocyks-2d523.firebaseapp.com",
+    databaseURL: "https://pocyks-2d523.firebaseio.com/",
+    storageBucket: "pocyks-2d523.appspot.com",
+    messagingSenderId: '<your-messaging-sender-id>'
+};
 var AppModule = (function () {
     function AppModule() {
     }
@@ -519,6 +859,9 @@ AppModule = __decorate([
                     { loadChildren: '../pages/tab-usuarios/tab-usuarios.module#TabUsuariosPageModule', name: 'TabUsuariosPage', segment: 'tab-usuarios', priority: 'low', defaultHistory: [] }
                 ]
             }),
+            __WEBPACK_IMPORTED_MODULE_21_angularfire2__["a" /* AngularFireModule */].initializeApp(firebaseConfig),
+            __WEBPACK_IMPORTED_MODULE_22_angularfire2_database__["a" /* AngularFireDatabaseModule */],
+            __WEBPACK_IMPORTED_MODULE_23_angularfire2_auth__["b" /* AngularFireAuthModule */],
             __WEBPACK_IMPORTED_MODULE_16__ionic_storage__["a" /* IonicStorageModule */].forRoot({
                 name: '__mydb',
                 driverOrder: ['indexeddb', 'sqlite', 'websql']
@@ -550,18 +893,18 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 282:
+/***/ 374:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_home_home__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tab_cep_tab_cep__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tab_map_tab_map__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_sociais_sociais__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_home_home__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tab_cep_tab_cep__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tab_map_tab_map__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_sociais_sociais__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -628,290 +971,14 @@ __decorate([
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/ricardo/pocyks/src/app/app.html"*/'<ion-menu id="leftMenu" [content]="content" type="overlay">\n	<ion-header>\n		<ion-toolbar>\n			<ion-title>Pages</ion-title>\n		</ion-toolbar>\n	</ion-header>\n	\n	<ion-content>\n<!-- \n		<ion-card text-center class="hide-card">\n			<img src="http://placehold.it/300x200" class="custom-avatar"/>\n			<h2>Victorcodex</h2>\n			<p>Have some p tag here</p>\n			<p>I am the third guy inline here</p>\n			<hr>\n		</ion-card> -->\n		<ion-list>\n			<button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">\n				<ion-icon [name]="p.icon" item-left ></ion-icon>\n				{{p.title}}\n            </button>\n		</ion-list>\n	</ion-content>\n\n</ion-menu>\n\n<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>'/*ion-inline-end:"/Users/ricardo/pocyks/src/app/app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/ricardo/pocyks/src/app/app.html"*/'<ion-menu id="leftMenu" [content]="content" type="overlay">\n	<ion-header>\n		<ion-toolbar>\n			<ion-title>Menu</ion-title>\n		</ion-toolbar>\n	</ion-header>\n	\n	<ion-content>\n<!-- \n		<ion-card text-center class="hide-card">\n			<img src="http://placehold.it/300x200" class="custom-avatar"/>\n			<h2>Victorcodex</h2>\n			<p>Have some p tag here</p>\n			<p>I am the third guy inline here</p>\n			<hr>\n		</ion-card> -->\n		<ion-list>\n			<button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">\n				<ion-icon [name]="p.icon" item-left ></ion-icon>\n				{{p.title}}\n            </button>\n		</ion-list>\n	</ion-content>\n\n</ion-menu>\n\n<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>'/*ion-inline-end:"/Users/ricardo/pocyks/src/app/app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__["a" /* StatusBar */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map
 
-/***/ }),
-
-/***/ 79:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_contact_contact__ = __webpack_require__(106);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var HomePage = (function () {
-    function HomePage(navCtrl, contactProvider, toast, nav) {
-        this.navCtrl = navCtrl;
-        this.contactProvider = contactProvider;
-        this.toast = toast;
-    }
-    HomePage.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        console.log('ionViewDidLoad HomePage');
-        this.contactProvider.getAll()
-            .then(function (result) {
-            _this.contacts = result;
-        });
-    };
-    HomePage.prototype.addContact = function () {
-        this.navCtrl.push('EditContactPage');
-    };
-    HomePage.prototype.editContact = function (item) {
-        this.navCtrl.push('EditContactPage', { key: item.key, contact: item.contact });
-    };
-    HomePage.prototype.removeContact = function (item) {
-        var _this = this;
-        this.contactProvider.remove(item.key)
-            .then(function () {
-            // Removendo do array de items
-            var index = _this.contacts.indexOf(item);
-            _this.contacts.splice(index, 1);
-            _this.toast.create({ message: 'Contato removido.', duration: 3000, position: 'botton' }).present();
-        });
-    };
-    return HomePage;
-}());
-HomePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>PocYKS 2</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-list>\n        <ion-item-sliding *ngFor="let item of contacts" [ngClass]="{\'item-inactive\': !item.contact.active }">\n            <button ion-item (click)="editContact(item);">\n              <h2>{{ item.contact.name }}  {{ item.contact.lastname }}</h2>\n              <p>{{ item.contact.email }}</p>\n              <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>\n            </button>\n      \n            <ion-item-options>\n              <button ion-button color="danger" (click)="removeContact(item);">\n                DELETAR\n              </button>\n            </ion-item-options>\n        </ion-item-sliding>\n\n    </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="primary" (click)="addContact()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/home/home.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_contact_contact__["b" /* ContactProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]])
-], HomePage);
-
-//# sourceMappingURL=home.js.map
-
-/***/ }),
-
-/***/ 80:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabCepPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(161);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the TabCepPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-var TabCepPage = (function () {
-    function TabCepPage(navCtrl, restProvider) {
-        this.navCtrl = navCtrl;
-        this.restProvider = restProvider;
-        // this.getUsers();
-    }
-    TabCepPage.prototype.getUsers = function (id) {
-        var _this = this;
-        this.restProvider.getUsers(id)
-            .then(function (data) {
-            _this.users = data;
-            console.log(_this.users);
-        });
-    };
-    TabCepPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TabCepPage');
-    };
-    return TabCepPage;
-}());
-TabCepPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-tab-cep',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/tab-cep/tab-cep.html"*/'<!--\n  Generated template for the TabCepPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>CEP</ion-title>\n	</ion-navbar>\n</ion-header>\n\n\n<ion-content>\n\n    <ion-item>\n        <ion-label stacked>CEP</ion-label>\n        <ion-input type="tel" name="name" maxlength=8 [(ngModel)]="cep"></ion-input>\n      </ion-item>\n  <!-- <ion-list inset> -->\n\n   <button ion-button block (click)="getUsers(cep)">Buscar</button>\n    <!-- <ion-item> -->\n      <p>{{users?.tipoDeLogradouro}} {{users?.logradouro}}</p>\n      <p>{{users?.bairro}}</p>\n      \n    <!-- </ion-item> -->\n\n    <!-- <ion-item *ngIf="users">\n      <h2>{{users.name}}</h2>\n      <p>{{users.email}}</p>\n    </ion-item> -->\n  <!-- </ion-list> -->\n\n  <!-- <button ion-button block (click)="getUsers()">Carregar</button> -->\n</ion-content>\n'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/tab-cep/tab-cep.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
-], TabCepPage);
-
-//# sourceMappingURL=tab-cep.js.map
-
-/***/ }),
-
-/***/ 81:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabMapPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the TabMapPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-var TabMapPage = (function () {
-    function TabMapPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    TabMapPage.prototype.ionViewDidLoad = function () {
-        this.initMap();
-        console.log('ionViewDidLoad TabMapPage');
-    };
-    TabMapPage.prototype.initMap = function () {
-        var latLng = new google.maps.LatLng(-34.9290, 138.6010);
-        var mapOptions = {
-            center: latLng,
-            zoom: 15,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    };
-    return TabMapPage;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* ViewChild */])('map'),
-    __metadata("design:type", Object)
-], TabMapPage.prototype, "mapElement", void 0);
-TabMapPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-tab-map',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/tab-map/tab-map.html"*/'<!--\n  Generated template for the TabMapPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>MAP</ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div #map id ="map"></div>\n</ion-content>\n'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/tab-map/tab-map.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-], TabMapPage);
-
-//# sourceMappingURL=tab-map.js.map
-
-/***/ }),
-
-/***/ 82:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SociaisPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_facebook__ = __webpack_require__(165);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the SociaisPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-var SociaisPage = (function () {
-    function SociaisPage(navCtrl, navParams, fb) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.fb = fb;
-        this.isLoggedIn = false;
-        fb.getLoginStatus()
-            .then(function (res) {
-            console.log(res.status);
-            if (res.status === "connect") {
-                _this.isLoggedIn = true;
-            }
-            else {
-                _this.isLoggedIn = false;
-            }
-        })
-            .catch(function (e) { return console.log(e); });
-    }
-    SociaisPage.prototype.login = function () {
-        var _this = this;
-        this.fb.login(['public_profile', 'user_friends', 'email'])
-            .then(function (res) {
-            if (res.status === "connected") {
-                _this.isLoggedIn = true;
-                _this.getUserDetail(res.authResponse.userID);
-            }
-            else {
-                _this.isLoggedIn = false;
-            }
-        })
-            .catch(function (e) { return console.log('Error logging into Facebook', e); });
-    };
-    SociaisPage.prototype.logout = function () {
-        var _this = this;
-        this.fb.logout()
-            .then(function (res) { return _this.isLoggedIn = false; })
-            .catch(function (e) { return console.log('Error logout from Facebook', e); });
-    };
-    SociaisPage.prototype.getUserDetail = function (userid) {
-        var _this = this;
-        this.fb.api("/" + userid + "/?fields=id,email,name,picture,gender", ["public_profile"])
-            .then(function (res) {
-            console.log(res);
-            _this.users = res;
-        })
-            .catch(function (e) {
-            console.log(e);
-        });
-    };
-    SociaisPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad SociaisPage');
-    };
-    return SociaisPage;
-}());
-SociaisPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPage */])(),
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-sociais',template:/*ion-inline-start:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Facebook</ion-title>\n      </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="isLoggedIn; else facebookLogin">\n    <h2>Olá, {{users.name}} ({{users.email}})</h2>\n    <p>\n      Sexo: {{users.gender}}\n    </p>\n    <p>\n      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />\n    </p>\n    <p>\n      <button ion-button icon-right (click)="logout()">\n        Logout\n      </button>\n    </p>\n  </div>\n  <ng-template #facebookLogin>\n    <button ion-button icon-right (click)="login()">\n      Logar com\n      <ion-icon name="logo-facebook"></ion-icon>\n    </button>\n  </ng-template>\n</ion-content>'/*ion-inline-end:"/Users/ricardo/pocyks/src/pages/sociais/sociais.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_facebook__["a" /* Facebook */]])
-], SociaisPage);
-
-//# sourceMappingURL=sociais.js.map
-
 /***/ })
 
-},[208]);
+},[285]);
 //# sourceMappingURL=main.js.map

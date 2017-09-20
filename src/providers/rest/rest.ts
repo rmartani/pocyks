@@ -13,7 +13,7 @@ import { AlertController } from 'ionic-angular';
 @Injectable()
 export class RestProvider {
 
-  apiUrl = '/cep/';
+  apiUrl = 'http://correiosapi.apphb.com/cep/';
 
   constructor(public http: HttpClient, public alertCtrl: AlertController) {
     console.log('Hello RestServiceProvider Provider');
@@ -29,6 +29,7 @@ export class RestProvider {
       });
     });
   }
+
 
   addUser(data) {
     return new Promise((resolve, reject) => {

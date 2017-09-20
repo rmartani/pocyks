@@ -22,9 +22,11 @@
       </ion-item>
   <!-- <ion-list inset> -->
 
-   <button ion-button block (click)="getUsers(cep)">Buscar</button>
+    
+   <button ion-button round color="cep" (click)="getUsers(cep)">Buscar</button>
     <!-- <ion-item> -->
       <p>{{users?.tipoDeLogradouro}} {{users?.logradouro}}</p>
+      {{users?.cidade}} {{users?.estado}}
       <p>{{users?.bairro}}</p>
       
     <!-- </ion-item> -->
